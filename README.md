@@ -4,7 +4,7 @@ A simple number guessing game where the user tries to guess the secret number. T
 
 ## Demo
 <p align="center">
-  <img src="https://i.postimg.cc/htgHS3D0/output1.png" width="400" alt="Project Screenshot">
+  <img src="https://i.postimg.cc/wj0d6cJ0/output4.png" width="400" alt="Project Screenshot">
 </p>
 
 ## How to Run
