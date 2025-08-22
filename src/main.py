@@ -1,20 +1,46 @@
 import random
 
-# Generate a secret number between 1 and 50
-secret_number = random.randint(1, 50)
+print('\nNumber Guessing Game!')
 
-print('\nWelcome to the Number Guessing Game!')
-print('Guess a number between 1 and 50.')
+attempts_done = 0
+attempts_left = 5
 
 while True:
-    # Get user guess
-    guess = int(input('Enter your guess: '))
+    try:
+        # Get min and max range from user
+        min_num = int(input('Enter the minimum number for the range: '))
+        max_num = int(input('Enter the maximum number for the range: '))
 
-    # Compare guess with user secret number
-    if guess == secret_number:
-        print('Congratulations! You guessed the correct number.')
+        # Generate a secret number between user defined range
+        secret_number = random.randint(min_num, max_num)
         break
-    elif guess < secret_number:
-        print('Too Low! Try again.')
-    else:
-        print('Too High! Try again.')
+    except ValueError:
+        print('Please enter valid numbers.')
+
+while True:
+    # Check if user has attempts
+    if attempts_left == 0:
+        print("You're out of attempts! Game over.")
+        break
+
+    try:
+        # Show remaining attempts and get user guess
+        print(f'You only have {attempts_left} attempts.')
+        guess = int(input(f'Guess a number between {min_num} and {max_num}: '))
+
+        # Compare user guess with secret number
+        if guess > secret_number:
+            attempts_done += 1
+            attempts_left -= 1
+            print('Too High! Try again.')
+        elif guess < secret_number:
+            attempts_done += 1
+            attempts_left -= 1
+            print('Too Low! Try again.')
+        else:
+            attempts_done += 1
+            print(f'Congratulations! You guessed the number in {attempts_done} attempts.')
+            break
+
+    except ValueError:
+        print('Please enter a valid number.')
